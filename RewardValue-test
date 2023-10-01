@@ -1,0 +1,65 @@
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class RewardValueTests {
+double cashValue=100;
+    @Test
+    void create_with_cash_value() {
+        double cashValue = 100;
+        var rewardValue = new RewardValue(cashValue);
+        assertEquals(cashValue, rewardValue.getCashValue());
+    }
+
+    @Test
+    void create_with_miles_value() {
+        int milesValue = 10000;
+        var rewardValue = new RewardValue(milesValue);
+        assertEquals(milesValue, rewardValue.getMilesValue());
+    }
+    public double getMilesValue() {
+        return cashValue / RewardValue._conversionRate;
+    }
+
+
+    @Test
+    void convert_from_cash_to_miles() {
+        assertEquals(0.0035, RewardValue._conversionRate, 0.0001);
+
+        // Check that the getCashValue() method is calculating the conversion value correctly.
+        double expectedCashValue = 100 * RewardValue._conversionRate;
+        double actualCashValue;
+
+        // Initialize the rewardValue variable.
+        RewardValue rewardValue = new RewardValue(100);
+
+        actualCashValue = rewardValue.getCashValue();
+
+        // Assert that the actual cash value is equal to the expected cash value.
+        assertEquals(expectedCashValue, actualCashValue, 0.0035);
+    }
+
+    @Test
+    void convert_from_miles_to_cash() {
+        assertEquals(0.0035, RewardValue._conversionRate, 0.0001);
+
+        // Check that the getCashValue() method is calculating the conversion value correctly.
+        double expectedCashValue = 2857 * RewardValue._conversionRate;
+        double actualCashValue;
+
+        // Initialize the rewardValue variable.
+        RewardValue rewardValue = new RewardValue(2857);
+
+        actualCashValue = rewardValue.getCashValue();
+
+        // Assert that the actual cash value is equal to the expected cash value.
+        assertEquals(expectedCashValue, actualCashValue, 0.0035);
+    }
+
+
+
+
+}
