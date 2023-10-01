@@ -1,0 +1,67 @@
+public class RewardValue {
+
+    public static double _conversionRate=0.0035;
+    private double cashValue;
+        private double milesValue;
+
+        private String _milesUnit = "miles";
+        private String _cashUnit = "cash";
+        private double value;
+        private String unit;
+
+        public RewardValue(double cashValue) {
+            this.cashValue = cashValue;
+            this.milesValue = (int) (cashValue / _conversionRate);
+        }
+
+        public RewardValue(int milesValue) {
+            this.milesValue = milesValue;
+            this.cashValue = milesValue * _conversionRate;
+        }
+
+        public RewardValue(double value, String unit) {
+            if (unit == null) {
+                throw new IllegalArgumentException("Unit cannot be null");
+            }
+
+            if (!unit.equals(_cashUnit) && !unit.equals(_milesUnit)) {
+                throw new IllegalArgumentException("Invalid unit");
+            }
+
+            this.value = value;
+            this.unit = unit;
+        }
+
+        public double getCashValue() {
+            return cashValue;
+        }
+
+        public void setCashValue(double cashValue) {
+            this.cashValue = cashValue;
+        }
+
+        public double getMilesValue() {
+            return milesValue;
+        }
+
+        public void setMilesValue(double milesValue) {
+            this.milesValue = milesValue;
+        }
+
+        public double getValue() {
+            return value;
+        }
+
+        public void setValue(double value) {
+            this.value = value;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+    }
+
